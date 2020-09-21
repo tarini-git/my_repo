@@ -1,0 +1,13 @@
+{% extends 'resumeapp/base.html'%}
+{% block title %} Login {% endblock %}
+{% block content %}
+<br><br>
+<h1>Login</h1>
+<div class="form-groups">
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+         <button class="btn btn-secondary">Login</button>
+    </form>
+</div>
+{% endblock %}

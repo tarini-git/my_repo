@@ -1,0 +1,17 @@
+{% extends 'resumeapp/base.html'%}
+{% block title %} Add post{% endblock %}
+{% block content %}
+<br><br>
+{% if user.is_authenticated %}
+<div class="form-groups">
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+         <button class="btn btn-secondary">Post</button>
+        <a href="{% url 'home' %}" class="btn btn-primary">back</a>
+    </form>
+</div>
+{% else %}
+<h2>you are not allowed </h2>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'resumeapp/base.html' %}
+{% block title %}categories{% endblock %}
+{% block content %}
+<h2>Category</h2>
+{% if category_post %}
+    <h2>{{cats}}</h2><h3>
+    {% for post in category_post %}</h3>
+
+    <ul>
+        <li>
+            <a href="{% url 'article' post.pk %}">
+                {{post.title}}</a> - {{post.author}}
+                {{post.author.last_name}}
+            {% if user.is_authenticated %}
+                {% if user.id == post.author.id %}
+                    <a href="{% url 'updatepost' post.pk %}" >edit</a>
+                    <a href="{% url 'deletepost' post.pk %}" >delete</a>{% endif %}<br/>
+                {% endif %}
+            {{post.body}}
+        </li>
+
+    </ul>
+    {% endfor %}
+    <a href="{% url 'home' %}" class="btn btn-secondary btn-sm">back</a>
+
+{% else %}
+    <h2>sorry this page does not exist</h2>
+{% endif %}
+
+{% endblock %}

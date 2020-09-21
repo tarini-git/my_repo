@@ -1,0 +1,23 @@
+{% extends 'resumeapp/base.html'%}
+{% block title %} {{post.title}}{% endblock %}
+{% block content %}
+    <h1>{{ post.title }}</h1>
+    <small>By: {{ post.author.username }} - {{post.post_date}}</small><br>
+    {{ post.body }}<br><br>
+<a href="{% url 'home' %}" class="btn btn-secondary btn-sm">Home</a><br></br>
+
+
+<form action="{% url 'like_post' post.pk %}" method="POST">
+    {% csrf_token %}
+    {% if user.is_authenticated %}
+    {% if liked %}
+        <button type="submit" name="post_id" value = "{{post.id}}" class="btn btn-danger">{{total_likes}} UnLike</button>
+    {% else %}
+    <button type="submit" name="post_id" value="{{post.id}}" class="btn btn-primary">{{total_likes}} Like</button>
+    {% endif %}
+    {% else %}
+    <small>please,login to like post</small>
+    {% endif %}
+</form>
+
+{% endblock %}

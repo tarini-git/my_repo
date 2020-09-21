@@ -1,0 +1,13 @@
+{% extends 'resumeapp/base.html'%}
+{% block title %} Register {% endblock %}
+{% block content %}
+<br><br>
+<h1>Register</h1>
+<div class="form-groups">
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+         <button class="btn btn-secondary">Register</button>
+    </form>
+</div>
+{% endblock %}

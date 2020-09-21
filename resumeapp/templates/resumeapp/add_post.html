@@ -1,0 +1,22 @@
+{% extends 'resumeapp/base.html'%}
+{% block title %} Add post{% endblock %}
+{% block content %}
+<br><br>
+{% if user.is_authenticated %}
+<div class="form-groups">
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+         <button class="btn btn-secondary">Post</button>
+        <a href="{% url 'home' %}" class="btn btn-primary">back</a>
+    </form>
+</div>
+<script>
+ var name = "{{user.id}}";
+ document.getElementById("uservalue").placeholder    = name
+</script>
+{% else %}
+
+<h2>Login first</h2>
+{% endif %}
+{% endblock %}
